@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-11-20 Wed 18:24 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blog</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Robert Woehrle Jr" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+
+<div id="outline-container-orgfee7afd" class="outline-2">
+<h2 id="orgfee7afd">Using org-mode to make this post</h2>
+<div class="outline-text-2" id="text-orgfee7afd">
+</div>
+<div id="outline-container-org7cd8453" class="outline-3">
+<h3 id="org7cd8453">Introduction</h3>
+<div class="outline-text-3" id="text-org7cd8453">
+</div>
+<div id="outline-container-org38d6bd5" class="outline-4">
+<h4 id="org38d6bd5">What I am doing</h4>
+<div class="outline-text-4" id="text-org38d6bd5">
+<p>
+Generating blog posts from org-mode files, push them to github or medium
+</p>
+</div>
+</div>
+<div id="outline-container-orgcb07750" class="outline-4">
+<h4 id="orgcb07750">Why am I doing this</h4>
+<div class="outline-text-4" id="text-orgcb07750">
+<p>
+I had begun documenting my various projects using org-mode in emacs. It then occured to me, I may as well start posting that documentation online. Maybe it will save someone a bit of a headache someday, maybe even myself. 
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="orgf9381b6"></a>NOTE: back stuff up + automate those backups + set up a good way to capture these thoughts<br /></li>
+<li><a id="org9ed4c9f"></a>NOTE: set-up a better way to do references<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org512197e" class="outline-3">
+<h3 id="org512197e">First Steps</h3>
+<div class="outline-text-3" id="text-org512197e">
+<p>
+So first, after reading about the setup in this medium post.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> I wanted to set up org-mode to publish files in a similar way - that from a set of org-files generate a blog post.
+</p>
+
+<p>
+The setup described has all of the blog post "source" files grouped into a folder, and then converted to html using org-publish. This keeps all of the pages of the page together, only updating new/changed ones. It does allow you to automatically upload them and run other commands during publishing.
+</p>
+</div>
+<div id="outline-container-org62303f3" class="outline-4">
+<h4 id="org62303f3">org-customize</h4>
+<div class="outline-text-4" id="text-org62303f3">
+<p>
+for each project, you need an entry in org-publish-project-alist - to create/add to this list, I used the command "org-customize" this brings up a list of org-mode option groups, enter expands the group, I found the setting I needed to change under org export -&gt; org publishing.
+[insert image: org-customize]
+</p>
+
+<p>
+org-customize usings the emacs easy-customization layer, and since this entry is an alist (associated list) you add entries to the list. For this setting, each entry is one project - the key is the project title, and the value is all of the settings, in the format (:setting value :setting value) etc, the () was essential to making it work. The org-mode manual states the publishing-function should be org-publish-to-html, this is incorrect as that function no longer exists in current releases. I believe the correct equivilant function is org-html-publish-to-html.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9bd09cc" class="outline-4">
+<h4 id="org9bd09cc">publishing a simple page</h4>
+<div class="outline-text-4" id="text-org9bd09cc">
+<p>
+By the end, I found it easier to work with my .spacemacs file directly, particularly when debugging issues. This has the added advantage of resulting in a more readable file, as whitespace can be customized. I ended up with the following:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs_lisp">'(org-publish-project-alist
+  (quote
+   (
+    ("posts"
+     :base-directory "~/projects/myWeb/blog/src/"
+     :publishing-directory "~/projects/myWeb/blog/publish/"
+     :publishing-function org-html-publish-to-html
+     :headline-levels 4
+     :recursive t
+     :auto-preamble t
+     )
+   ("org-static"
+     :base-directory "~/projects/myWeb/blog/src"
+     :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+     :publishing-directory "~/projects/myWeb/blog/publish/"
+     :recursive t
+     :publishing-function org-publish-attachment
+     )
+   )))
+</pre>
+</div>
+
+<p>
+this went in the (custom-set-variables &#x2026;) section
+</p>
+</div>
+</div>
+<div id="outline-container-org9d1ea60" class="outline-4">
+<h4 id="org9d1ea60">adding basic styles and images</h4>
+<div class="outline-text-4" id="text-org9d1ea60">
+<p>
+above, the second entry in the alist copies any images and css files to the publishing directory. The first step to fixing the way the page looks is to import the default export templates. This is done via the export dispatcher (c-c c-e #). If you import both the html header and the default header  
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge4b2803" class="outline-2">
+<h2 id="orge4b2803">Problems I had, and how I solved them</h2>
+<div class="outline-text-2" id="text-orge4b2803">
+</div>
+<div id="outline-container-orgccec076" class="outline-3">
+<h3 id="orgccec076">won't publish, get an error of incorrect arguments, not sure wrapping the customization in () works</h3>
+<div class="outline-text-3" id="text-orgccec076">
+<p>
+if not, I think this is the code block I would have needed to include
+(setq org-publish-project-alist '(("blog" :base-directory "~/projects/myWeb/blog/src/" :publishing-directory "~/projects/myWeb/blog/publish")))
+in my .spacemacs file
+</p>
+
+<p>
+This did not fix it, the setting was in my .spacemacs file, but had not properly saved, I mashed the save button in the org-customize window a bunch and eventually it worked.
+</p>
+</div>
+</div>
+<div id="outline-container-org170052f" class="outline-3">
+<h3 id="org170052f">org-export-process exits abnormally</h3>
+<div class="outline-text-3" id="text-org170052f">
+<p>
+org-html-export-as-html works on its own - however, as soon as I try to use it as part of publish I get an error and no output is generated. This problem continued until I added a few more lines to the configuration, following the tutorial at worg.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
+Their example was ("org-notes" :base-directory "~/org/" :base-extension "org" :publishing-directory "~/public<sub>html</sub>/" :recursive t :publishing-function org-html-publish-to-html :headline-levels 4 :auto-preamble t) 
+to keep it consistant with the .spacemacs format I had to change it to (quote(("org-notes1" &#x2026;) ("org notes2" &#x2026;)))
+</p>
+
+<p>
+With further testing, it still works even when I returned to my old function?
+The publishing function was my issue, I was using org-html-export-to-html not org-html-publish-to-html
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org577d649" class="outline-2">
+<h2 id="org577d649">Things I learned along the way</h2>
+<div class="outline-text-2" id="text-org577d649">
+</div>
+<div id="outline-container-org524a218" class="outline-3">
+<h3 id="org524a218">using footnotes in org-mode (here, used for citations)</h3>
+<div class="outline-text-3" id="text-org524a218">
+<p>
+can be done by number C-c C-x f is the quick command for them <sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>
+in text format is <code class="src src-org"><span style="color: #b2b2b2; text-decoration: underline;">[fn:name]</span></code> placed in text and again at the bottom of the document
+</p>
+
+<p>
+this can also be done entirely in-line with <code class="src src-org">[fn:name:def]</code><sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup>
+</p>
+</div>
+</div>
+<div id="outline-container-org734c49c" class="outline-3">
+<h3 id="org734c49c">code blocks</h3>
+<div class="outline-text-3" id="text-org734c49c">
+<p>
+inline code blocks can be done via <code class="src src-org">src_&lt;lang_id&gt;[header]{code}</code>
+multi-line code blocks can be done via the following:
+</p>
+<div class="org-src-container">
+<pre class="src src-org" id="org88e5a9c">
+<span style="color: #9f8766;">#+NAME: &lt;id&gt;</span>
+<span style="color: #827591; background-color: #373040;">#+BEGIN_SRC &lt;lang_id&gt; &lt;args&gt;</span>
+ &lt;body&gt;
+<span style="color: #827591; background-color: #373040;">#+END_SRC</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4dce817" class="outline-3">
+<h3 id="org4dce817">vim - clearing search highlighting</h3>
+<div class="outline-text-3" id="text-org4dce817">
+</div>
+<ul class="org-ul">
+<li><a id="orgfb9e368"></a>1 - :noh<br /></li>
+<li><a id="org3225ae2"></a>2 - :let @/=""<br /></li>
+<li><a id="orgc4df3d6"></a>3 - /alksjdfkajslk;jda<br /></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org70cae9a" class="outline-2">
+<h2 id="org70cae9a">References</h2>
+<div class="outline-text-2" id="text-org70cae9a">
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://medium.com/@zac.wood9/blogging-with-org-mode-abc24ba81b8b">https://medium.com/@zac.wood9/blogging-with-org-mode-abc24ba81b8b</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html">https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html</a>
+</p>
+
+<p class="footpara">
+<a href="https://orgmode.org/manual/Publishing.html#Publishing">https://orgmode.org/manual/Publishing.html#Publishing</a>
+<a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Changing-a-Variable.html#Changing-a-Variable">https://www.gnu.org/software/emacs/manual/html_node/emacs/Changing-a-Variable.html#Changing-a-Variable</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://orgmode.org/manual/Footnotes.html">https://orgmode.org/manual/Footnotes.html</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">name can be omitted</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Robert Woehrle Jr</p>
+<p class="date">Created: 2019-11-20 Wed 18:24</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
