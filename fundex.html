@@ -6,7 +6,7 @@
 <!-- 2019-11-21 Thu 12:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>How I fixed it - Small projects</title>
+<title>Fun Stuff</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Robert Woehrle Jr" />
 <style type="text/css">
@@ -242,136 +242,28 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">How I fixed it - Small projects</h1>
-
-<div id="outline-container-orgb2ea645" class="outline-2">
-<h2 id="orgb2ea645">adding pbcopy/pbpaste to fedora</h2>
-<div class="outline-text-2" id="text-orgb2ea645">
-</div>
-<div id="outline-container-org37cdbcd" class="outline-3">
-<h3 id="org37cdbcd">What</h3>
-<div class="outline-text-3" id="text-org37cdbcd">
+<h1 class="title">Fun Stuff</h1>
 <p>
-adding a command line tool to move text to the system clipboard
-</p>
-</div>
-</div>
-<div id="outline-container-org383c4a5" class="outline-3">
-<h3 id="org383c4a5">why</h3>
-<div class="outline-text-3" id="text-org383c4a5">
-<p>
-often used for posting questions where config files / logs would be useful. I think the reason I first set it up was for easily uploading my ssh key to github. Online tutorials often reference a similar tool that exists on other distros/macos.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgbd486ef" class="outline-3">
-<h3 id="orgbd486ef">process</h3>
-<div class="outline-text-3" id="text-orgbd486ef">
-<p>
-Easy!
-Add the following lines to .bashrc (found the your home folder)
+Similar to the other page, but this one is for stuff like games and other less obviously useful projects.
 </p>
 
-
-<div class="org-src-container">
-<pre class="src src-bash"><span style="color: #4f97d7;">alias</span> <span style="color: #7590db;">pbcopy</span>=<span style="color: #2d9574;">'xsel --clipboard --input'</span>
-<span style="color: #4f97d7;">alias</span> <span style="color: #7590db;">pbpaste</span>=<span style="color: #2d9574;">'xsel --clipboard --output'</span>
-</pre>
-</div>
-
+<div id="outline-container-orgd6009ee" class="outline-2">
+<h2 id="orgd6009ee">subpages</h2>
+<div class="outline-text-2" id="text-orgd6009ee">
 <p>
-you could just type those whole commands, but I find that harder to remember, and I involves too much typing. 
-</p>
-</div>
-</div>
-
-<div id="outline-container-org3022e91" class="outline-3">
-<h3 id="org3022e91">Usage</h3>
-<div class="outline-text-3" id="text-org3022e91">
-<p>
-(replaces file if it exists) paste to a new file: begin<sub>bash</sub>[:exports code]{pbpaste &gt; file}
-append to a file: begin<sub>bash</sub>[:exports code]{pbpaste &gt;&gt; file}
+<a href="fun/dnd.html">d&amp;d</a>
 </p>
 
 <p>
-copy a file to clipboard: begin<sub>bash</sub>[:exports code]{pbcopy &lt; file}
-copy some text? begin<sub>bash</sub>[:exports]{echo "text" | pbcopy}
+<a href="fun/dartrules.html">Dart Rules</a>
+</p>
+
+<p>
+<a href="fun/fantasyfootball.html">Fantasy Football Analytics</a>
 </p>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgb5a0b93" class="outline-2">
-<h2 id="orgb5a0b93">Collected "learned along the way" from other pages</h2>
-<div class="outline-text-2" id="text-orgb5a0b93">
-</div>
-<div id="outline-container-orgce657bd" class="outline-3">
-<h3 id="orgce657bd">Blog <a href="blogging.html">link</a></h3>
-<div class="outline-text-3" id="text-orgce657bd">
-</div>
-<div id="outline-container-orge9649a0" class="outline-4">
-<h4 id="orge9649a0">using footnotes in org-mode (here, used for citations)</h4>
-<div class="outline-text-4" id="text-orge9649a0">
-<p>
-can be done by number C-c C-x f is the quick command for them <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
-in text format is <code class="src src-org"><span style="color: #b2b2b2; text-decoration: underline;">[fn:name]</span></code> placed in text and again at the bottom of the document
-</p>
-
-<p>
-this can also be done entirely in-line with <code class="src src-org">[fn:name:def]</code><sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
-</p>
-</div>
-</div>
-<div id="outline-container-orgd0e70d8" class="outline-4">
-<h4 id="orgd0e70d8">code blocks</h4>
-<div class="outline-text-4" id="text-orgd0e70d8">
-<p>
-inline code blocks can be done via <code class="src src-org">src_&lt;lang_id&gt;[header]{code}</code>
-multi-line code blocks can be done via the following:
-</p>
-<div class="org-src-container">
-<pre class="src src-org" id="org0093b8c">
-<span style="color: #9f8766;">#+NAME: &lt;id&gt;</span>
-<span style="color: #827591; background-color: #373040;">#+BEGIN_SRC &lt;lang_id&gt; &lt;args&gt;</span>
- &lt;body&gt;
-<span style="color: #827591; background-color: #373040;">#+END_SRC</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgbae3d50" class="outline-4">
-<h4 id="orgbae3d50">vim - clearing search highlighting</h4>
-<div class="outline-text-4" id="text-orgbae3d50">
-</div>
-<ul class="org-ul">
-<li><a id="orgab3810a"></a>1 - :noh<br /></li>
-<li><a id="org83fa1f6"></a>2 - :let @/=""<br /></li>
-<li><a id="org4b9bb62"></a>3 - /alksjdfkajslk;jda<br /></li>
-</ul>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-orgf6c89d3" class="outline-2">
-<h2 id="orgf6c89d3">References</h2>
-<div class="outline-text-2" id="text-orgf6c89d3">
-</div>
-</div>
-<div id="footnotes">
-<h2 class="footnotes">Footnotes: </h2>
-<div id="text-footnotes">
-
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://orgmode.org/manual/Footnotes.html">https://orgmode.org/manual/Footnotes.html</a>
-</p></div></div>
-
-<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">name can be omitted</p></div></div>
-
-
-</div>
-</div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Robert Woehrle Jr</p>
 <p class="date">Created: 2019-11-21 Thu 12:04</p>
