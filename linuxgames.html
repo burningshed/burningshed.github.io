@@ -6,7 +6,7 @@
 <!-- 2019-11-21 Thu 16:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Fun Stuff</title>
+<title>Linux Gaming</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Robert Woehrle Jr" />
 <style type="text/css">
@@ -242,36 +242,53 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Fun Stuff</h1>
+<h1 class="title">Linux Gaming</h1>
 <p>
-<a href="index.html">back to how I fixed it</a>
+<a href="../fundex.html">back to fun stuff</a>
+</p>
+
+<div id="outline-container-org993f637" class="outline-2">
+<h2 id="org993f637">converting wine-lol.deb to wine-lol.rpm</h2>
+<div class="outline-text-2" id="text-org993f637">
+<p>
+just trying:
+<code class="src src-bash">alien -ri file</code>
+did not work for me. It gave an error saying file / from install conflicts with this file from package filesystem.
+Searching online I found this guide.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
 </p>
 
 <p>
-Similar to the other page, but this one is for stuff like games and other less obviously useful projects.
+These are the steps I ended up taking:
 </p>
+<ol class="org-ol">
+<li>Download .deb files</li>
+<li>Run the following</li>
+</ol>
 
-<div id="outline-container-orgd6009ee" class="outline-2">
-<h2 id="orgd6009ee">subpages</h2>
-<div class="outline-text-2" id="text-orgd6009ee">
-<p>
-<a href="fun/dnd.html">d&amp;d</a>
-</p>
+<div class="org-src-container">
+<pre class="src src-bash">alien -rg file.deb
+sed -i <span style="color: #2d9574;">'s#%dir "/"##'</span> filefolder/file.spec
+sed -i <span style="color: #2d9574;">'s#%dir "/usr/bin/"##'</span> filefolder/file.spec
+<span style="color: #4f97d7;">cd</span> filefolder
+rpmbuild --buildroot /full/path/filefolder/ --bb file.spec
+<span style="color: #4f97d7;">cd</span> ..
 
-<p>
-<a href="fun/dartrules.html">Dart Rules</a>
-</p>
-
-<p>
-<a href="fun/fantasyfootball.html">Fantasy Football Analytics</a>
-</p>
-
-<p>
-<a href="linuxgames.html">gaming on linux</a>
-</p>
+sudo rpm -i file.rpm
+</pre>
 </div>
 </div>
 </div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.electricmonk.nl/log/2017/02/23/how-to-solve-rpms-created-by-alien-having-file-conflicts/">https://www.electricmonk.nl/log/2017/02/23/how-to-solve-rpms-created-by-alien-having-file-conflicts/</a>
+</p></div></div>
+
+
+</div>
+</div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Robert Woehrle Jr</p>
 <p class="date">Created: 2019-11-21 Thu 16:59</p>
