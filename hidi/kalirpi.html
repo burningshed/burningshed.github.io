@@ -6,7 +6,7 @@
 <!-- 2019-12-04 Wed 11:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Fun Stuff</title>
+<title>Installing Kali Linux on a Raspberry Pi 3 b+</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Robert Woehrle Jr" />
 <style type="text/css">
@@ -242,36 +242,51 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Fun Stuff</h1>
 <p>
-<a href="index.html">back to how I fixed it</a>
+<a href="../index.html">back to to how I fixed it</a>
+</p>
+
+<div id="outline-container-orgc368f34" class="outline-2">
+<h2 id="orgc368f34">How I Did it</h2>
+<div class="outline-text-2" id="text-orgc368f34">
+<p>
+First, get the image, I have a Raspberry Pi 3 b+, so I got the 64-bit image from:
+<a href="https://www.offensive-security.com/kali-linux-arm-images/">https://www.offensive-security.com/kali-linux-arm-images/</a>
 </p>
 
 <p>
-Similar to the other page, but this one is for stuff like games and other less obviously useful projects.
-</p>
-
-<div id="outline-container-orgd6009ee" class="outline-2">
-<h2 id="orgd6009ee">subpages</h2>
-<div class="outline-text-2" id="text-orgd6009ee">
-<p>
-<a href="fun/dnd.html">d&amp;d</a>
+These are all compressed in .xz format, so run: <code class="src src-bash">unxz PATH/TO/IMAGE</code>
 </p>
 
 <p>
-<a href="fun/dartrules.html">Dart Rules</a>
+then, to write the image to the sdcard:
 </p>
 
 <p>
-<a href="fun/fantasyfootball.html">Fantasy Football Analytics</a>
+<code class="src src-bash">sudo dd <span style="color: #7590db;">if</span>=PATH/TO/IMAGE <span style="color: #7590db;">of</span>=PATH/TO/SDCARD</code>
 </p>
 
 <p>
-<a href="linuxgames.html">gaming on linux</a>
+once it is installed, I plugged in a keyboard, mouse, and monitor and setup wifi so I Could remote in.
+changed the root password - sshd is running.
+</p>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orge078e1d" class="outline-2">
+<h2 id="orge078e1d">Things I found along the way</h2>
+<div class="outline-text-2" id="text-orge078e1d">
+<p>
+I always forget the details of the command to write an image, namely what exactly the flags I need are, so here they are, explained:
+the flags mean: if - input file, of - output file
+bs - blocksize (I left it out of this command, I used 512k when writing the image, not sure what it defaults to)
 </p>
 
 <p>
-<a href="cooking.html">cooking</a> 
+One thing that took a surprisngly amount of time: .xz files, they can be decompressed with unxz 
 </p>
 </div>
 </div>

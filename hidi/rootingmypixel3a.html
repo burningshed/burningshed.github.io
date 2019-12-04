@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-12-04 Wed 11:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How I rooted my Pixel 3a</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Robert Woehrle Jr" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<p>
+<a href="../index.html">back to to how I fixed it</a>
+</p>
+
+<div id="outline-container-org59fbdbb" class="outline-2">
+<h2 id="org59fbdbb">Introduction</h2>
+<div class="outline-text-2" id="text-org59fbdbb">
+</div>
+<div id="outline-container-org93330dd" class="outline-3">
+<h3 id="org93330dd">What</h3>
+<div class="outline-text-3" id="text-org93330dd">
+<p>
+Getting Root access on my pixel 3a. Also needed to unlock the bootloader.
+</p>
+</div>
+</div>
+<div id="outline-container-org6bcbc30" class="outline-3">
+<h3 id="org6bcbc30">Why</h3>
+<div class="outline-text-3" id="text-org6bcbc30">
+<p>
+There is always a chance of bricking/erasing a phone when you do this - I never want to once I have it all set-up and have been using it for awhile. Usually I don't think to until I need root for some app, but hold off figuring I will just do it next time I switch phones. Then the process repeats. This time I remembered.
+</p>
+
+<p>
+I don't remember the reasons I wanted root before at the moment, but I know I have run into the issue on all my older phones, so I am doing it now.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org706b774" class="outline-2">
+<h2 id="org706b774">How I did it</h2>
+<div class="outline-text-2" id="text-org706b774">
+</div>
+<div id="outline-container-org016d568" class="outline-3">
+<h3 id="org016d568">Stuff Needed</h3>
+<div class="outline-text-3" id="text-org016d568">
+</div>
+<ul class="org-ul">
+<li><a id="orgcd4a112"></a>Cable, phone to PC<br /></li>
+<li><a id="orgbc041f0"></a>Magisk Canary<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> (Canary for Android 10 devices)<br /></li>
+<li><a id="org8732b6e"></a>fastboot and adb installed (I already have them on my laptop, in my path even glad I did that some time in the past)<br /></li>
+<li><a id="org686ad20"></a>boot.img for your phone (for pixel devices <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup><br /></li>
+</ul>
+</div>
+<div id="outline-container-orgbd2af4f" class="outline-3">
+<h3 id="orgbd2af4f">Unlock Bootloader</h3>
+<div class="outline-text-3" id="text-orgbd2af4f">
+<p>
+   Note: Unlocking your bootloader does wipe your phone and add an annoying screen to bootup warning you it is now insecure.
+I used these instructions. <sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>
+</p>
+</div>
+<div id="outline-container-org5d626d4" class="outline-4">
+<h4 id="org5d626d4">Enable OEM Unlocking in Dev Options</h4>
+<div class="outline-text-4" id="text-org5d626d4">
+<p>
+First step is to unlock the bootloader. This is accomplished by enabling OEM unlocking in developer options. (for reference, developer options is a secret menu that is enabled (on android 10) by tapping the build number in about phone a bunch of times (once you tap it a few times it will start telling you how many taps are left).
+</p>
+</div>
+</div>
+<div id="outline-container-org02ca2f3" class="outline-4">
+<h4 id="org02ca2f3">Get into fastboot mode</h4>
+<div class="outline-text-4" id="text-org02ca2f3">
+</div>
+<ul class="org-ul">
+<li><a id="orga4ce7da"></a>Avoid needing to run sudo fastboot<br />
+<div class="outline-text-5" id="text-orga4ce7da">
+<p>
+Once this is enabled, you need to launch fastboot mode. You can run the commands as root, which in theory should work but is not generally a good practice - and avoiding it in this case is pretty easy. All you need to do is give your user account access to the USB device. I used an answer from this SO question. <sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup>
+</p>
+
+<p>
+First, make sure USB debugging is enabled in dev options on your phone.
+</p>
+
+<p>
+With your phone plugged in run <code class="src src-bash">lsusb</code> or <code class="src src-bash">lsusb -v | less</code> to see a list of all usb devices. Note the vendor ID - might still be 18d1 for all google devices, but I am not sure. Edit, or create the file /<code class="src src-bash">etc/udev/rules.d/11-android.rules</code> (I always forget to use sudo the first time) and add the following line: 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #7590db;">SUBSYSTEMS</span>==<span style="color: #2d9574;">"usb"</span>, ATTRS<span style="color: #4f97d7;">{</span>idVendor<span style="color: #4f97d7;">}</span>==<span style="color: #2d9574;">"18d1"</span>, <span style="color: #7590db;">MODE</span>=<span style="color: #2d9574;">"0640"</span>, <span style="color: #7590db;">OWNER</span>=<span style="color: #2d9574;">"YOUR_USERNAME"</span>
+</pre>
+</div>
+
+<p>
+The answer said to use the commands:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">sudo service udev restart
+ls -Rl /dev/bus/usb
+</pre>
+</div>
+
+<p>
+however, these did not work for me. Instead, as noted in a reply, I found
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">sudo udevnadm control --reload
+sudo udevadm trigger
+</pre>
+</div>
+<p>
+link referenced<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>
+</p>
+
+<p>
+I only found the <code class="src src-bash">ls -Rl /dev/bus/usb</code> to be entirely unhelpful in telling if it worked. I just ran <code class="src src-bash">adb devices</code> and saw a phone listed (unauthorized until accepting it on the phone.
+</p>
+
+<p>
+Note: I am not sure this was nessessary, may have been other issues (phone settings etc) that I fixed my figuring this out.
+</p>
+</div>
+</li>
+
+<li><a id="org307c209"></a>fastboot<br />
+<div class="outline-text-5" id="text-org307c209">
+<p>
+I then ran the following commands to get into fastboot and unlock the bootloader.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">adb reboot bootloader
+fastboot flashing unlock
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">if this doesn't work try: fastboot oem unlock</span>
+</pre>
+</div>
+
+<p>
+the first command should switch the phone to fastboot mode. the second should bring up a screen on the phone asking if you really want to do this. Press yes to continue. The phone then reboots (can take a bit of time) and then erases everything. The bootloader is now unlocked.
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb4dee87" class="outline-3">
+<h3 id="orgb4dee87">Getting patched version of boot.img</h3>
+<div class="outline-text-3" id="text-orgb4dee87">
+<p>
+Note: I ran into a bunch of problems because I used the wrong boot.img the first time (it is December, I just got a new phone from google, I use google fi. I updated my phone before doing any of this. I thought I would have the December android build. I did not I had the November one instead. Double check the build in "About Phone" and make sure it is the same as the factory image you download.
+</p>
+
+<p>
+Unzip the factory image you downloaded, then inside it is another zip file, unzip that, and grab the boot.img 
+Note 2: I did not do this, but the command <code class="src src-bash">unzip -j <span style="color: #2d9574;">"archive.zip"</span> <span style="color: #2d9574;">"in/archive/file.txt"</span> -d <span style="color: #2d9574;">"/path/to/unzip/to"</span></code> might make this easier - I just used ctrl-c to cancel the unzip operation once the file I wanted was out.
+</p>
+
+<p>
+Send the boot.img over to your phone, (I put it in Downloads, this seems to be the default choice for Magisk anyway)
+</p>
+
+<p>
+Install Magisk, I used the command <code class="src src-bash">adb install ./MagiskManagerCanary.apk</code> 
+</p>
+
+<p>
+After installing, open Magisk on your phone. When I did it needed to update, after that was complete, click install, then Install again. This will give a list of choices. Pick "choose and patch a file". Select the boot.img you copied over. Once this process completes it will create a file "magisk<sub>patched.img</sub>". 
+</p>
+</div>
+</div>
+<div id="outline-container-orgdd83450" class="outline-3">
+<h3 id="orgdd83450">Installing Patched .img</h3>
+<div class="outline-text-3" id="text-orgdd83450">
+<p>
+Copy "magisk<sub>patched.img</sub>" back to your PC, boot into fastboot mode (either through adb as above or by powering the phone down and holding power and volume down as it powers back up) then run the command <code class="src src-bash">fastboot flash boot magisk_patched.img</code>. When this completes boot the phone and everything should be working 
+</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+Magisk apks (lets you root/unroot easily?) <a href="https://highonandroid.com/magisk-supersu/">https://highonandroid.com/magisk-supersu/</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+pixel factory images <a href="https://developers.google.com/android/images#sargo">https://developers.google.com/android/images#sargo</a> 
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+Unlocking bootloader Android 10 - <a href="https://highonandroid.com/android-root-101/how-to-unlock-bootloader-on-any-android-android-root-101-1/">https://highonandroid.com/android-root-101/how-to-unlock-bootloader-on-any-android-android-root-101-1/</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
+How to give access to user for USB device <a href="https://stackoverflow.com/questions/7641939/android-fastboot-waiting-for-devices">https://stackoverflow.com/questions/7641939/android-fastboot-waiting-for-devices</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <div class="footpara"><p class="footpara">
+how to restart usb permission service <a href="https://bbs.archlinux.org/viewtopic.php?id=169103">https://bbs.archlinux.org/viewtopic.php?id=169103</a>
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Robert Woehrle Jr</p>
+<p class="date">Created: 2019-12-04 Wed 11:12</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
